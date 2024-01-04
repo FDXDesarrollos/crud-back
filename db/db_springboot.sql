@@ -11,7 +11,7 @@
  Target Server Version : 100338
  File Encoding         : 65001
 
- Date: 29/12/2023 18:19:12
+ Date: 04/01/2024 11:42:15
 */
 
 SET NAMES utf8mb4;
@@ -29,7 +29,7 @@ CREATE TABLE `albums` (
   `precio` double DEFAULT NULL,
   `titulo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of albums
@@ -160,7 +160,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_kfsp0s1tflm1cwlj8idhqsad0` (`email`),
   UNIQUE KEY `UK_3m5n1w5trapxlbo2s42ugwdmd` (`usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Records of usuarios
@@ -168,6 +168,7 @@ CREATE TABLE `usuarios` (
 BEGIN;
 INSERT INTO `usuarios` VALUES (1, 'webmaster@gmail.com', 'webmaster', '$2a$10$qZ1v5HDkPW/p.mMZCJ3OsO.TFFVi6CR5lNmewjpvvlkVQWN3M7bn2', 'admin');
 INSERT INTO `usuarios` VALUES (2, 'gabo@gmail.com', 'gabo', '$2a$10$eLlFCPFWmQBh3uEw0oxla.2qs8o5cE0BF2cTnjPEmnoHnbq.Ilu6q', 'user');
+INSERT INTO `usuarios` VALUES (3, 'asdasdasd@gmail.com', 'asdasdasd adasdsad tertetet', '$2a$10$oLpy0mvSYIOHh2JWJZA79uXlRf15gBoQY49mIHlFbNKfEoPG3Wphq', 'asno');
 COMMIT;
 
 -- ----------------------------
@@ -190,6 +191,7 @@ BEGIN;
 INSERT INTO `usuarios_roles` VALUES (1, 1);
 INSERT INTO `usuarios_roles` VALUES (1, 2);
 INSERT INTO `usuarios_roles` VALUES (2, 2);
+INSERT INTO `usuarios_roles` VALUES (3, 2);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
