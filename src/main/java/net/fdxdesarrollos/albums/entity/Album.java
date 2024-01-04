@@ -26,7 +26,7 @@ public class Album {
 	@NotBlank
 	private String interprete;
 	
-	@NotBlank
+	//@NotBlank
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "es-MX", timezone = "America/Mexico_City") 
 	private Date fecha;
 	

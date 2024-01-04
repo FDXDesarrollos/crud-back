@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,8 @@ import net.fdxdesarrollos.albums.service.AlbumService;
 
 @RestController
 @RequestMapping("/api/album")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class AlbumController {
 	
 	@Autowired
@@ -54,6 +56,7 @@ public class AlbumController {
 		return new ResponseEntity<Album>(album, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/agregar")
 	public ResponseEntity<?> create(@RequestBody Album album) {
 		if(StringUtils.isBlank(album.getTitulo()))
@@ -69,6 +72,7 @@ public class AlbumController {
 		return new ResponseEntity(new Mensaje("Información registrada"), HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/actualizar/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Album album) {
 		if(!albumService.existsById(id))
@@ -87,6 +91,7 @@ public class AlbumController {
 		return new ResponseEntity(new Mensaje("Información actualizada"), HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") int id) {
 		if(!albumService.existsById(id))
